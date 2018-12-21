@@ -1,0 +1,113 @@
+
+
+@mixin clearFix{
+    &:after{
+        content:'';
+        display: block;
+        clear:both; 
+    }
+}
+
+@mixin mQ($arg...) {
+    ///if 1 value do
+    @if length($arg) == 1{
+        @media screen and (max-width: nth($arg, 1)){
+            @content;
+        }
+    }
+    ///if 2 value do
+    @if length($arg) == 2 {
+        @media screen and (max-width: nth($arg, 1)) and (min-width: nth($arg, 2)){
+            @content;
+        }
+    }
+}
+//////////each news
+@mixin eachnews{
+    img{
+        display: block;
+        width:100%;
+    }
+    span.date{
+        display: inline-block;
+        font-size: 16px;
+        color: $news-descr-date;
+        font-weight: 100;
+        padding:20px 10px 0 0;
+    }
+    span.title{
+        font-size: 22px;
+        color: $juicyRed;
+        font-weight: 100;
+        word-wrap: break-word;
+    }
+    span.title:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    span.descr{
+        display: block;
+        font-size: 16px;
+        color: $news-descr-date;
+        font-weight: 100;
+        padding:20px 0;
+    }
+    .fas{
+        display: inline-block;
+        color: $whiteelements;
+        padding-right:10px;
+    }
+    .fas:hover{
+        color: $juicyRed;
+        cursor: pointer;
+    }
+}
+
+///// each involved 
+@mixin eachinvlvds{
+  
+    i.fas{
+        font-size:70px;
+        color:$whiteelements;
+        padding:20px 0;
+        padding-right:40px;
+        display: inline-block;
+        vertical-align: top;
+
+        @include mQ(770px){   
+            font-size:50px;
+        }
+    }
+    .box-text{
+        display: inline-block;
+        width:50%;
+        text-align: left;
+
+        @include mQ(1170px){   
+            width:40%;
+        }
+        @include mQ(770px){   
+            width:60%;
+        }
+        span.title{
+            color:$whiteelements;
+            font-size: 28px;
+            font-weight: 200;
+
+            @include mQ(770px){   
+                font-size: 22px;
+            }
+        }
+        span.discr{
+            color:$whiteelements;
+            font-size: 16px;
+            font-weight: 200;
+            display: block;
+            padding:10px 0;
+
+            @include mQ(770px){   
+                font-size: 14px;
+            }
+        }
+    }
+}
